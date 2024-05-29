@@ -1,8 +1,9 @@
 name: static
 on:
-  # Runs when a release of this package is published.
-  release:
-    types: [published]
+  # Runs on pushes to "main"
+  push:
+    branches:
+      - main
   # Allows manual dispatch
   workflow_dispatch:
 
