@@ -1,7 +1,7 @@
 {
   "_static": {
     "generator": {
-      "name":  "@globus/static-data-portal"
+      "name":  "custom-data-portal"
     }
   },
   "data": {
