@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>{STATIC.data.attributes.content.title}</title>
+        <title>This is my title now</title>
         <meta
           name="description"
           content="A Globus-powered research data portal."
