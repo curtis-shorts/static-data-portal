@@ -183,7 +183,7 @@ export default function Home() {
               <Box p={2}>
                 <Box p={2}>
                   <InputGroup>
-                    <InputLeftAddon>Source</InputLeftAddon>
+                    <InputLeftAddon>Pull it up!</InputLeftAddon>
                     <Input
                       value={source.display_name || source.name}
                     />
