@@ -1,7 +1,7 @@
 {
-  "name": "@globus/static-data-portal",
+  "name": "custom-data-portal",
   "version": "1.3.0",
-  "repository": "github:globus/static-data-portal",
+  "repository": "curtis-shorts:static-data-portal",
   "files": [],
   "license": "Apache-2.0",
   "scripts": {
