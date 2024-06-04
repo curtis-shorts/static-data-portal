@@ -176,7 +176,9 @@ export default function Home() {
     <>
       <TransferSettingsContext.Provider value={transferSettings}>
         <TransferSettingsDispatchContext.Provider value={dispatch}>
+          // Return a 2-column frame with a spacing of 1 between them
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={1}>
+            // Set the source (index 0 so it's left) box
             {source ? (
               <Box p={2}>
                 <Box p={2}>
@@ -258,15 +260,20 @@ export default function Home() {
             )}
 
 
-
+            // Set the source (index 1 so it's right) box
+            // (condition) ? x : y is the conditional (ternary) operator, evaluate x if true and y if false
             {destination ? (
+              // Destination is true so display the content of the destination directory
               <Box p={2}>
                 <Box p={2}>
+                  // Bar at the top of the box
                   <InputGroup>
                     <InputLeftAddon>Destination</InputLeftAddon>
+                    // Display the current destination path in the search bar (not a live search bar)
                     <Input
                       value={destination.display_name || destination.name}
                     />
+                    // Button to change the destination (brings up the endpoint search pop-up)
                     <InputRightElement>
                       <IconButton
                         variant="ghost"
@@ -286,12 +293,14 @@ export default function Home() {
                     </InputRightElement>
                   </InputGroup>
                 </Box>
+                // What does this do?
                 <FileBrowser
                   variant="destination"
                   collection={destination.id}
                 />
               </Box>
             ) : (
+              // Destination is false so display a message and give an option to set one
               <Box p={4}>
                 <Container>
                   <Card variant="filled" size="sm">
