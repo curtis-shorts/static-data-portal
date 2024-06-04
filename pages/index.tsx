@@ -177,7 +177,8 @@ export default function Home() {
       <TransferSettingsContext.Provider value={transferSettings}>
         <TransferSettingsDispatchContext.Provider value={dispatch}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={1}>
-            <Box p={2}>
+            /** Commented out
+            </SimpleGrid><Box p={2}>
               <Box p={2}>
                 <InputGroup>
                   <InputLeftAddon>Source</InputLeftAddon>
@@ -196,6 +197,90 @@ export default function Home() {
                 path={STATIC.data.attributes.globus.transfer?.path}
               />
             </Box>
+            */
+
+            {source ? (
+              <Box p={2}>
+                <Box p={2}>
+                  <InputGroup>
+                    <InputLeftAddon>Source</InputLeftAddon>
+                    <Input
+                      value={source.display_name || source.name}
+                    />
+                    <InputRightElement>
+                      <IconButton
+                        variant="ghost"
+                        size="sm"
+                        isRound
+                        aria-label="Clear"
+                        colorScheme="gray"
+                        icon={<Icon as={XCircleIcon} boxSize={6} />}
+                        onClick={() => {
+                          dispatch({ type: "SET_SOURCE", payload: null });
+                          dispatch({
+                            type: "SET_SOURCE_PATH",
+                            payload: null,
+                          });
+                        }}
+                      />
+                    </InputRightElement>
+                  </InputGroup>
+                </Box>
+                <FileBrowser
+                  variant="source"
+                  collection={source.id}
+                />
+              </Box>
+            ) : (
+              <Box p={4}>
+                <Container>
+                  <Card variant="filled" size="sm">
+                    <CardBody>
+                      <Text pb={2}>
+                        You are viewing data made available by{" "}
+                        {source?.display_name}.
+                        <br /> To transfer data to another location,{" "}
+                        <Button onClick={onOpen} variant="link">
+                          search for a destination
+                        </Button>
+                        .
+                      </Text>
+                    </CardBody>
+                  </Card>
+                </Container>
+
+                <Drawer
+                  placement="right"
+                  onClose={onClose}
+                  isOpen={isOpen}
+                  size="lg"
+                >
+                  <DrawerOverlay />
+                  <DrawerContent>
+                    <DrawerHeader borderBottomWidth="1px">
+                      Search for a destination
+                    </DrawerHeader>
+                    <DrawerBody>
+                      <CollectionSearch
+                        onSelect={(endpoint) => {
+                          dispatch({
+                            type: "SET_DESTINATION",
+                            payload: endpoint,
+                          });
+                          dispatch({
+                            type: "SET_DESTINATION_PATH",
+                            payload: endpoint.default_directory,
+                          });
+                        }}
+                      />
+                    </DrawerBody>
+                  </DrawerContent>
+                </Drawer>
+              </Box>
+            )}
+
+
+
             {destination ? (
               <Box p={2}>
                 <Box p={2}>
