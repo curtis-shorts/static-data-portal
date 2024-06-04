@@ -306,8 +306,7 @@ export default function Home() {
                   <Card variant="filled" size="sm">
                     <CardBody>
                       <Text pb={2}>
-                        You are viewing data made available by{" "}
-                        {source?.display_name}.
+                        Check this out!
                         <br /> To transfer data to another location,{" "}
                         <Button onClick={onOpen} variant="link">
                           search for a destination
