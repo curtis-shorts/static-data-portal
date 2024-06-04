@@ -177,28 +177,6 @@ export default function Home() {
       <TransferSettingsContext.Provider value={transferSettings}>
         <TransferSettingsDispatchContext.Provider value={dispatch}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={1}>
-            /** Commented out
-            </SimpleGrid><Box p={2}>
-              <Box p={2}>
-                <InputGroup>
-                  <InputLeftAddon>Source</InputLeftAddon>
-                  <Input
-                    value={source ? source.display_name || source.name : "..."}
-                    variant="filled"
-                    isReadOnly
-                  />
-                </InputGroup>
-              </Box>
-              <FileBrowser
-                variant="source"
-                collection={
-                  STATIC.data.attributes.globus.transfer.collection_id
-                }
-                path={STATIC.data.attributes.globus.transfer?.path}
-              />
-            </Box>
-            */
-
             {source ? (
               <Box p={2}>
                 <Box p={2}>
@@ -258,17 +236,17 @@ export default function Home() {
                   <DrawerOverlay />
                   <DrawerContent>
                     <DrawerHeader borderBottomWidth="1px">
-                      Search for a destination
+                      Search for a source
                     </DrawerHeader>
                     <DrawerBody>
                       <CollectionSearch
                         onSelect={(endpoint) => {
                           dispatch({
-                            type: "SET_DESTINATION",
+                            type: "SET_SOURCE",
                             payload: endpoint,
                           });
                           dispatch({
-                            type: "SET_DESTINATION_PATH",
+                            type: "SET_SOURCE_PATH",
                             payload: endpoint.default_directory,
                           });
                         }}
